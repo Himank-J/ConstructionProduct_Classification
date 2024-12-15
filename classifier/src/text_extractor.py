@@ -45,23 +45,20 @@ class OCRProcessor:
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
-        # images = self.pdf_img_convert.pdf_to_img_conversion(file_path,output_folder)
-        # if images:
-        #     combined_text = ""
+        images = self.pdf_img_convert.pdf_to_img_conversion(file_path,output_folder)
+        if images:
+            combined_text = ""
 
-            # for image in images:
-        combined_text, page_count = self.getText(file_path)
-                # result = self.ocr.ocr(image, cls=True)
-                # for idx in range(len(result)):
-                #     res = result[idx]
-                #     for line in res:
-                #         # print('line',line)
-                #         # print('line',line[1][0])
-                #         text = line[1][0]
-                #         combined_text += f'{text} '
-                #     # break
-                # combined_text += '\n'
+            for image in images:
+                result = self.ocr.ocr(image, cls=True)
+                for idx in range(len(result)):
+                    res = result[idx]
+                    for line in res:
+                        # print('line',line)
+                        # print('line',line[1][0])
+                        text = line[1][0]
+                        combined_text += f'{text} '
+                    # break
+                combined_text += '\n'
 
-        return combined_text.strip(), page_count
-
-        return 'PDF File error', 0
+        return combined_text.strip()
