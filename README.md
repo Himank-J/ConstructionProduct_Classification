@@ -14,6 +14,8 @@ As part of enhancing product understanding, we seek to determine if a product do
 
 ## [Demo](https://huggingface.co/spaces/HimankJ/SmartDocumentClassifier)
 
+<img width="1219" alt="image" src="https://github.com/user-attachments/assets/6081e3ce-d274-4ee3-a95c-25fbfad48100" />
+
 ---
 
 ## Solution
@@ -50,13 +52,17 @@ To tackle the problem statement I have created a pipeline that will download the
 2. Explain your solution?
 - The idea is to classify document basis text. After understanding the given data I felt text classification would be a good approach as it would capture the minute details that associates a document to a class. 
 
-Steps - 
-2.1 Download data from input url
-2.2 Split pdfs to images
-2.3 Perform OCR for text extraction
-2.4 Model training and inference using input text
-
-For more details refer Solution section above
+    Steps -
+  
+    2.1 Download data from input url
+    
+    2.2 Split pdfs to images
+    
+    2.3 Perform OCR for text extraction
+    
+    2.4 Model training and inference using input text
+    
+For more details refer [Solution](#solution) section above
 
 3. Which model did you use and why?
 - Dataset was used to train 4 models:
@@ -70,11 +76,14 @@ Basis the performance all models seemed overfitted as accuracy is well above 99%
 4. Any shortcomings and how can we improve the performance?
 
 There was various ways we can improve the performance/efficiency of current solution - 
-4.1 PDF to Image - Currently I have used poppler, as efficient as it is, it sometimes fails to convert pdf to images. In such scenarios we can have a fallback method to conver pdf to image
-4.2 Text Extraction - I have used PaddleOCR. It is one of the best open source model when it comes to text extraction. However it has its own bottleneck.
+- PDF to Image - Currently I have used poppler, as efficient as it is, it sometimes fails to convert pdf to images. In such scenarios we can have a fallback method to conver pdf to image
+
+- Text Extraction - I have used PaddleOCR. It is one of the best open source model when it comes to text extraction. However it has its own bottleneck.
+
     - Inference speed - low response time on cpu devices, can be optimised using various in built parameters or by using gpu/fine-tuning
     - We can also opt to use paid ocr model likes AWS textract or Azure computer vision which are fast, accurate and cost effective
-4.3 Model training - Approach is text classification. It can work very well when trained on diverse and large samples. We can also add layout features such as table count, headers, sub headers etc.
+
+- Model training - Approach is text classification. It can work very well when trained on diverse and large samples. We can also add layout features such as table count, headers, sub headers etc.
 
 5. Report the model's performance on the test data using an appropriate
 metric. Explain why you chose this particular metric.
