@@ -1,9 +1,6 @@
 import os, time
 from paddleocr import PaddleOCR
 from pdf_img_convert import PDFtoImage
-from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
-from msrest.authentication import CognitiveServicesCredentials
 from loguru import logger
 
 class OCRProcessor:
@@ -11,8 +8,7 @@ class OCRProcessor:
     def __init__(self):
         self.pdf_img_convert = PDFtoImage()
         self.ocr = PaddleOCR(use_angle_cls=True, lang='en')
-        self.__cvClient = ComputerVisionClient('https://digitisation-ocr-base.cognitiveservices.azure.com/', CognitiveServicesCredentials('73dca90028ff4e5bb6ff96840e9a4faa'))
-
+        
     def getText(self,file_path):
 
         page_count = 0
